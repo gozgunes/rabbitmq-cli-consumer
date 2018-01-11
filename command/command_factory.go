@@ -2,8 +2,8 @@ package command
 
 import (
 	"os/exec"
-		"log"
-    	"io"
+	"log"
+    "io"
 )
 
 type CommandFactory struct {
