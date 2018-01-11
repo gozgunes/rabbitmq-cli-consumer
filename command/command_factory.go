@@ -12,7 +12,11 @@ type CommandFactory struct {
 func (me CommandFactory) Create(body string) *exec.Cmd {
 	cmd := exec.Command(me.Cmd, me.Args...)
 
-	stdin := cmd.StdinPipe()
+	stdin, err := cmd.StdinPipe()
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	go func() {
 		if(len(body) > 0) {
